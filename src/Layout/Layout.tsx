@@ -3,26 +3,29 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
-import {menuItems} from "./constants";
-import {MenuItemElement} from "./MenuItemElement";
+import {menuItems} from "../common/constants";
 import {Outlet} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {styled} from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
-import {MenuItemElementTypography} from "./MenuItemElementTypography";
+import {NavigationLink} from "./Navigation/NavigationLink";
 
-const Item = styled(Paper)(({theme}) => ({
+const ItemContentThemeComponent = styled(Paper)(({theme}) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: "80vh",
+    borderRadius: "0 0 25px 25px",
+    height: "85vh",
 }));
+
+
+
+
 
 export const Layout = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -39,6 +42,7 @@ export const Layout = () => {
         <div>
             <AppBar position="static">
                 <Container maxWidth="xs">
+
                     <Toolbar disableGutters>
                         <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
@@ -51,6 +55,7 @@ export const Layout = () => {
                             >
                                 <MenuIcon/>
                             </IconButton>
+
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElNav}
@@ -63,28 +68,39 @@ export const Layout = () => {
                                     vertical: 'top',
                                     horizontal: 'left',
                                 }}
-                                open={Boolean(anchorElNav)}
+                                open={!!anchorElNav}
                                 onClose={handleCloseNavMenu}
                                 sx={{
                                     display: {xs: 'block', md: 'none'},
                                 }}
                             >
                                 {menuItems.map((menuItem) => (
-                                    <MenuItem key={menuItem.id} onClick={handleCloseNavMenu}>
-                                        <MenuItemElementTypography
-                                            key={menuItem.id}
-                                            href={menuItem.href}
-                                            label={menuItem.label}
-                                        />
-                                    </MenuItem>
+
+                                    <NavigationLink
+                                        key={menuItem.id}
+                                        href={menuItem.href}
+                                        label={menuItem.label}
+                                        handleCloseNavMenu={handleCloseNavMenu}
+                                        isRow={false}
+                                    />
+
                                 ))}
                             </Menu>
+
                         </Box>
+
                         <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}}}>
-                            {menuItems.map((menuItem) => (
-                                <MenuItemElement key={menuItem.id} href={menuItem.href} label={menuItem.label}/>
-                            ))}
+                                {menuItems.map((menuItem) => (
+                                    <NavigationLink
+                                        key={menuItem.id}
+                                        href={menuItem.href}
+                                        label={menuItem.label}
+                                        handleCloseNavMenu={handleCloseNavMenu}
+                                        isRow={true}
+                                    />
+                                ))}
                         </Box>
+
                     </Toolbar>
                 </Container>
             </AppBar>
@@ -95,10 +111,10 @@ export const Layout = () => {
 
                     </Grid>
                     <Grid item xs={10}>
-                        <Item>
+                        <ItemContentThemeComponent>
                             {/*render page*/}
                             <Outlet/>
-                        </Item>
+                        </ItemContentThemeComponent>
                     </Grid>
                     <Grid item xs={1}>
 

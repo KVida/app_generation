@@ -6,4 +6,11 @@ export interface MenuItem {
     href: string,
 }
 
+export interface NavigationLinkProps {
+    href: string,
+    label: string,
+    handleCloseNavMenu: any,
+    isRow: boolean
+}
+
 export type MenuItems = Array<MenuItem>;

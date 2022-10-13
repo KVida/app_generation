@@ -1,13 +1,13 @@
 import * as React from "react";
-import {Routes, Route, Outlet, Link} from "react-router-dom";
-import "./constants";
-import {Calc} from "../Calc/Cacl";
-import {Logs} from "../Logs/Logs";
-import {Home} from "../Home/Home";
-import {Page404} from "./Page404";
-import {Layout} from "./Layout";
+import {Routes, Route} from "react-router-dom";
+import "../../common/constants";
+import {Layout} from "../Layout";
+import {Home} from "../../Pages/Home/Home";
+import {Calc} from "../../Pages/Calc/Cacl";
+import {Logs} from "../../Pages/Logs/Logs";
+import {Page404} from "../../Pages/Page404";
 
-export const MenuMain = () => {
+export const NavigationRouters = () => {
     return (
         <Routes>
             <Route path="/" element={<Layout/>}>
