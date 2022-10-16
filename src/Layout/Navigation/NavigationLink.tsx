@@ -7,12 +7,10 @@ import {styled} from "@mui/material/styles";
 
 const LinkComponentRow = styled('span')(({theme}) => ({
     color: "#fff",
-    textDecoration: "none"
 }));
 
 const LinkComponentCell = styled('span')(({theme}) => ({
     color: "#000",
-    textDecoration: "null"
 }));
 
 export const NavigationLink = (prop: NavigationLinkProps) => {
@@ -24,7 +22,6 @@ export const NavigationLink = (prop: NavigationLinkProps) => {
                 <Typography sx={{display: "block"}}>
                     {isRow && <LinkComponentRow>{label}</LinkComponentRow>}
                     {!isRow && <LinkComponentCell>{label}</LinkComponentCell>}
-
                 </Typography>
             </MenuItem>
         </Link>
