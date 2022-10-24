@@ -9,6 +9,6 @@ export const menuItems = [
     {id: 2, label: PAGE_LOGS, href: '/Logs',},
     {id: 3, label: PAGE_CALC_AREA, href: '/calc_area',},
 ];
-export const NUMBERS = new Array(10).fill(0).map((_, index) => (index == 9) ? 0:index+1);
+export const NUMBERS = new Array(10).fill(0).map((_, index) => (index == 9) ? 0 : index+1);
 
 export const ARR_OPERATIONS_CALC = ['+', '-'];

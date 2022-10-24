@@ -5,7 +5,11 @@ import {NUMBERS} from "../../common/constants";
 import {NumberBtn} from "../../components/NumberBtn";
 import {styled} from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import {useState} from "react";
+
+import {useDispatch, useSelector} from "react-redux";
+import {
+    selectNumber
+} from './calcSlice';
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,17 +20,8 @@ const Item = styled(Paper)(({theme}) => ({
 }));
 
 export const Calc = () => {
-    let [inputNumber, setInputNumber] = useState("0");
-
-    const onClickNumber = (event: React.MouseEvent<HTMLElement>) => {
-        let newNuber = (event.currentTarget.innerText);
-
-        if (inputNumber == "0") {
-            setInputNumber(newNuber);
-        } else {
-            setInputNumber(inputNumber + newNuber);
-        }
-    };
+    const number = useSelector(selectNumber);
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -34,10 +29,10 @@ export const Calc = () => {
             <Typography component="h2" sx={{color: "red"}}>Calculation</Typography>
 
             <TextField id="outlined-basic" type="number" inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
-                       value={inputNumber}/>
+                       value={number}/>
 
             <div>&nbsp;</div>
-            <Grid container  justifyContent="center">
+            <Grid container justifyContent="center">
                 <Grid item xs={1}>
                 </Grid>
                 <Grid item xs={3} border="1px solid #256852">
@@ -46,7 +41,7 @@ export const Calc = () => {
 
                             NUMBERS.map((numberElement) =>
                                 <Grid item key={numberElement}>
-                                    <NumberBtn numberEl={numberElement} onClickNumber={onClickNumber}/>
+                                    <NumberBtn numberEl={numberElement}  onClickNumber={dispatch}/>
                                 </Grid>
                             )
                         }
