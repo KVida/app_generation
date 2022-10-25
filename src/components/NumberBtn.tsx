@@ -5,13 +5,13 @@ import {
 
 interface NumberBtnProps {
     numberEl: number,
-    onClickNumber: void
+    onClickNumber: any,
 }
 
-export const NumberBtn = (props: any) => {
+export const NumberBtn = (props: NumberBtnProps) => {
     const {numberEl, onClickNumber} = props;
 
     return (
-        <Button variant="outlined" onClick={() =>onClickNumber(inputNumber(String(numberEl )|| "0"))}>{numberEl}</Button>
+        <Button variant="outlined" onClick={() =>onClickNumber(inputNumber(String(numberEl)))}>{numberEl}</Button>
     );
 };

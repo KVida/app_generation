@@ -1,48 +1,72 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 export interface CalcState {
     fullNumber: string,
     firstNumber: number,
     operation: string,
     secondNumber: number,
-    result: number
 }
 
 const initialState: CalcState = {
     fullNumber: "0",
     firstNumber: 0,
-    operation: '',
+    operation: "",
     secondNumber: 0,
-    result: 0
 };
 
 export interface stateApp {
-    calc:CalcState
+    calc: CalcState
 }
 
 export const calcSlice = createSlice({
     name: 'calc',
     initialState,
     reducers: {
-   /*     increment: (state) => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.value += 1
+        btnClear: (state: CalcState) => {
+            return {
+                ...initialState
+            };
         },
-        decrement: (state) => {
-            state.value -= 1
-        },
-        incrementByAmount: (state, action: PayloadAction<number>) => {
-            state.value += action.payload
-        },*/
+        btnEquals: (state: CalcState) => {
+            let firstNumberEl = Number(state.firstNumber),
+                secondNumberEl = Number(state.fullNumber),
+                operationEl = state.operation,
+                resultEl = parseInt(firstNumberEl + operationEl + secondNumberEl)
+            ;
+            //console.log(resultEl);
+           // console.log(state.fullNumber, state.firstNumber, state.operation, state.secondNumber);
 
-        inputNumber: (state, action) => {
-            if (state.fullNumber == "0"){
-                state.fullNumber = action.payload
+            return {
+                ...state,
+                secondNumber: Number(state.fullNumber),
+                fullNumber: String(resultEl)
+            };
+        },
+        operationCalc: (state: CalcState, action: any) => {
+            if (state.operation == '') {
+                return {
+                    ...state,
+                    firstNumber: Number(state.fullNumber),
+                    fullNumber: "0",
+                    operation: action.payload
+
+                };
             } else {
-                state.fullNumber =   state.fullNumber + action.payload
+                return {...state}
+            }
+        },
+
+        inputNumber: (state: CalcState, action: any) => {
+            if (state.fullNumber === "0") {
+                return {
+                    ...state,
+                    fullNumber: action.payload
+                };
+            } else {
+               return {
+                    ...state,
+                    fullNumber: state.fullNumber + action.payload
+                };
             }
 
         }
@@ -50,7 +74,7 @@ export const calcSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { inputNumber } = calcSlice.actions;
+export const {inputNumber, btnClear, operationCalc, btnEquals} = calcSlice.actions;
 
 export const selectNumber = (state: stateApp) => state.calc.fullNumber;
 
