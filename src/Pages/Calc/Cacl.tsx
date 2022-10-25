@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import {useDispatch, useSelector} from "react-redux";
 import {
     selectNumber
-} from './calcSlice';
+} from './calculatorSlice';
 import {CleanBtn} from "../../components/CleanBtn";
 import {OperationBtn} from "../../components/OperationBtn";
 import {EqualBtn} from "../../components/EqualBtn";
@@ -23,7 +23,7 @@ const Item = styled(Paper)(({theme}) => ({
 }));
 
 export const Calc = () => {
-    const number = useSelector(selectNumber);
+    const inputStore = useSelector(selectNumber);
     const dispatch = useDispatch();
 
     return (
@@ -31,8 +31,7 @@ export const Calc = () => {
             {/* @ts-ignore */}
             <Typography component="h2" sx={{color: "red"}}>Calculation</Typography>
 
-            <TextField id="outlined-basic" type="number" inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
-                       value={number}/>
+            <TextField id="outlined-basic" value={inputStore.expression}/>
 
             <div>&nbsp;</div>
             <Grid container justifyContent="center">
@@ -44,7 +43,7 @@ export const Calc = () => {
 
                             NUMBERS.map((numberElement) =>
                                 <Grid item key={numberElement}>
-                                    <NumberBtn numberEl={numberElement} onClickNumber={dispatch}/>
+                                    <NumberBtn numberEl={numberElement}/>
                                 </Grid>
                             )
                         }
@@ -53,17 +52,17 @@ export const Calc = () => {
                 <Grid item xs={1}>
                     <Grid container justifyContent="center">
                         <Grid item>
-                            <CleanBtn label="C" click={dispatch}/>
+                            <CleanBtn label="C"/>
                         </Grid>
                         <Grid item>
                             {
-                                OPERATIONS_CALC.map((operationElement, index) =>
-                                    <OperationBtn key={index} label={operationElement} click={dispatch}/>
+                                OPERATIONS_CALC.map((operationElement) =>
+                                    <OperationBtn key={operationElement} label={operationElement}/>
                                 )
                             }
                         </Grid>
                         <Grid item>
-                            <EqualBtn label="=" click={dispatch}/>
+                            <EqualBtn label="="/>
                         </Grid>
                     </Grid>
                 </Grid>

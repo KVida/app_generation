@@ -1,17 +1,22 @@
 import {Button} from "@mui/material";
 import {
     btnEquals
-} from './../Pages/Calc/calcSlice';
+} from '../Pages/Calc/calculatorSlice';
+import {useDispatch} from "react-redux";
 
 interface EqualBtnProps {
     label: string,
-    click: any
 }
 
 export const EqualBtn = (props: EqualBtnProps) => {
-    const {label, click} = props;
+    const {label} = props;
+
+    const dispatch = useDispatch();
+    const onClick =() => {
+        dispatch(btnEquals())
+    };
 
     return (
-        <Button variant="outlined" onClick={() =>click(btnEquals())}>{label}</Button>
+        <Button variant="outlined" onClick={onClick}>{label}</Button>
     );
 };

@@ -1,17 +1,23 @@
 import {Button} from "@mui/material";
 import {
     operationCalc
-} from './../Pages/Calc/calcSlice';
+} from '../Pages/Calc/calculatorSlice';
+import {useDispatch} from "react-redux";
+import {Operations} from "../common/type";
 
 interface OperationBtnProps {
-    label: string,
-    click: any
+    label: Operations,
 }
 
 export const OperationBtn = (props: OperationBtnProps) => {
-    const {label, click} = props;
+    const {label} = props;
+
+    const dispatch = useDispatch();
+    const onClick =() => {
+        dispatch(operationCalc(label))
+    };
 
     return (
-        <Button variant="outlined" onClick={() => click(operationCalc(label))}>{label}</Button>
+        <Button variant="outlined" onClick={onClick}>{label}</Button>
     );
 };

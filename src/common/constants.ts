@@ -1,3 +1,5 @@
+import {Operations} from "./type";
+
 export const HOME = 'Home';
 export const PAGE_CALC = 'Calc';
 export const PAGE_LOGS = 'Logs';
@@ -14,4 +16,4 @@ export const COUNT_NUMBERS = 10;
 //export const NUMBERS = new Array(COUNT_NUMBERS).fill(0).map((_, index) => (index == 9) ? 0 : index+1);
 export const NUMBERS = new Array(COUNT_NUMBERS).fill(0).map((_, index) => (index == 9) ? 0 : index+1);
 
-export const OPERATIONS_CALC = ['+', '-'];
+export const OPERATIONS_CALC : Operations[]= [Operations.ADD, Operations.SUBTRACTION];

@@ -1,17 +1,22 @@
 import {Button} from "@mui/material";
 import {
     btnClear
-} from './../Pages/Calc/calcSlice';
+} from '../Pages/Calc/calculatorSlice';
+import {useDispatch} from "react-redux";
 
 interface CleanBtnProps {
     label: string,
-    click: any
 }
 
 export const CleanBtn = (props: CleanBtnProps) => {
-    const {label, click} = props;
+    const {label} = props;
+
+    const dispatch = useDispatch();
+    const onClick =() => {
+        dispatch(btnClear())
+    };
 
     return (
-        <Button variant="outlined" onClick={() =>click(btnClear())}>{label}</Button>
+        <Button variant="outlined" onClick={onClick}>{label}</Button>
     );
 };
