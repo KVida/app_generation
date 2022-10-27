@@ -1,7 +1,7 @@
 import {Button} from "@mui/material";
 import {
-    operationCalc
-} from '../Pages/Calc/calculatorSlice';
+    inputOperation
+} from '../Pages/Calc/store/calculatorSlice';
 import {useDispatch} from "react-redux";
 import {Operations} from "../common/type";
 
@@ -13,8 +13,8 @@ export const OperationBtn = (props: OperationBtnProps) => {
     const {label} = props;
 
     const dispatch = useDispatch();
-    const onClick =() => {
-        dispatch(operationCalc(label))
+    const onClick = () => {
+        dispatch(inputOperation(label))
     };
 
     return (

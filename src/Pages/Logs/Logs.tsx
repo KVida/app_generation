@@ -1,5 +1,5 @@
 export const Logs = () => {
-    return(
+    return (
         <div>Logs</div>
     );
 };

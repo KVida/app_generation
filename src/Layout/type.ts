@@ -1,16 +1,11 @@
 export type MenuItemId = number;
 
-export interface MenuItem {
+export interface MenuItemElement {
     id: MenuItemId,
     label: string,
     href: string,
 }
 
-export interface NavigationLinkProps {
-    href: string,
-    label: string,
-    handleCloseNavMenu: any,
-    isRow: boolean
-}
+export type MenuItems = Array<MenuItemElement>;
 
-export type MenuItems = Array<MenuItem>;
+export type NavigationLinkVariant = 'vertical' | 'horizontal';

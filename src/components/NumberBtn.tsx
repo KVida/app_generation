@@ -1,7 +1,7 @@
 import {Button} from "@mui/material";
 import {
     inputNumber
-} from '../Pages/Calc/calculatorSlice';
+} from '../Pages/Calc/store/calculatorSlice';
 import {useDispatch} from "react-redux";
 
 interface NumberBtnProps {
@@ -12,7 +12,7 @@ export const NumberBtn = (props: NumberBtnProps) => {
     const {numberEl} = props;
 
     const dispatch = useDispatch();
-    const onClick =() => {
+    const onClick = () => {
         dispatch(inputNumber(Number(numberEl)))
     };
 
