@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TextField, Typography} from "@mui/material";
+import {TextField} from "@mui/material";
 import Grid from "@mui/material/Grid";
 import {NumberBtn} from "../../components/NumberBtn";
 import {styled} from '@mui/material/styles';
@@ -36,7 +36,7 @@ export const Calc = () => {
     return (
         <div>
             {/* @ts-ignore */}
-            <Typography component="h2" sx={{color: "red"}}>Calculation</Typography>
+            <HeaderPage label='Calculation'/>
 
             <DivComponentCalculation>
                 <TextField id="outlined-basic" value={expressionStore}/>
