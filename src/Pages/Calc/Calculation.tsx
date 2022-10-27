@@ -14,6 +14,7 @@ import {OperationBtn} from "../../components/OperationBtn";
 import {EqualBtn} from "../../components/EqualBtn";
 import {DIGIT, OPERATIONS_CALC} from "./constants";
 import {ColorPalett} from "../../common/constantsColor";
+import {HeaderPage} from "../../components/HeaderPage";
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: theme.palette.mode === 'dark' ? ColorPalett.background_color_dark : ColorPalett.background_color_light,
