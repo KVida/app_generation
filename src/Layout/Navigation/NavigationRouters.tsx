@@ -8,7 +8,11 @@ import {Logs} from "../../Pages/Logs/Logs";
 import {Page404} from "../../Pages/Page404";
 import {PATH_PAGE_CALC, PATH_PAGE_LOGS} from "../../common/constants";
 
-export const NavigationRouters = () => {
+interface NavigationRoutersProps {
+
+}
+
+export const NavigationRouters = (props: NavigationRoutersProps) => {
     return (
         <Routes>
             <Route path="/" element={<Layout/>}>

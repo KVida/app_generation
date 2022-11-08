@@ -1,3 +1,5 @@
+export const CALCULATION_STORAGE = 'calculationData';
+
 export const HOME = 'Home';
 export const PAGE_CALC = 'Calc';
 export const PAGE_LOGS = 'Logs';

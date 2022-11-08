@@ -19,8 +19,9 @@ const ItemContentThemeComponent = styled(Paper)(({theme}) => ({
     height: "85vh",
 }));
 
-export const ContentComponent = (props:ContentComponentProps) => {
-    return(
+export const ContentComponent = (props: ContentComponentProps) => {
+
+    return (
         <Box sx={{flexGrow: 1}}>
             <Grid container spacing={1}>
                 <Grid item xs={1}>

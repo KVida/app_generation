@@ -29,7 +29,10 @@ const DivComponentCalculation = styled('div')(({theme}) => ({
     margin: '0 auto',
 }));
 
-export const Calc = () => {
+interface CalcProps {
+}
+
+export const Calc = (props: CalcProps) => {
     const expressionStore = useSelector(selectExpression);
     const inputStore = useSelector(selectCalculatorStore);
     const dispatch = useDispatch();
